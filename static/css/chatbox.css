@@ -1,0 +1,15 @@
+#chatbox{
+    width:100% !important;
+}
+#titlebar{
+    display: none !important;
+}
+.chat-content{
+    width: 100% !important;
+    height: 200px !important;
+}
+#chattext .time{
+    float: left !important;
+    margin-left: 0px !important;
+    margin-right: 7px !important;
+}

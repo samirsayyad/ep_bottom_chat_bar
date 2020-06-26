@@ -1,0 +1,13 @@
+{
+    "parts": [
+      {
+        "name": "ep_bottom_chat_bar",
+        "hooks": {
+          "eejsBlock_styles":"ep_bottom_chat_bar/index:eejsBlock_styles"
+        },
+        "client_hooks": {
+            "aceInitialized": "ep_bottom_chat_bar/static/js/initialize"
+        }
+      }
+    ]
+  }
