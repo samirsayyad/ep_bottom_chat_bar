@@ -1,5 +1,6 @@
 #chatbox{
-    width:100% !important;
+    width:100% ;
+    resize: vertical;
 }
 #titlebar{
     display: none !important;
