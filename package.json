@@ -1,0 +1,23 @@
+{
+  "name": "ep_bottom_chat_bar",
+  "version": "1.0.0",
+  "description": "bottom chat and always open , also timestamp dock to left ",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/samirsayyad/ep_bottom_chat_bar.git"
+  },
+  "keywords": [
+    "Etherpad",
+    "Chatbox"
+  ],
+  "author": "Samir Sayyad",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/samirsayyad/ep_bottom_chat_bar/issues"
+  },
+  "homepage": "https://github.com/samirsayyad/ep_bottom_chat_bar#readme"
+}
