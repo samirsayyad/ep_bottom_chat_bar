@@ -1,3 +1,5 @@
+var padcookie = require('ep_etherpad-lite/static/js/pad_cookie').padcookie;
+
 exports.aceInitialized = function(hook, context){
     //chat.stickToScreen(true);
     var isDragging = false;
@@ -8,9 +10,24 @@ exports.aceInitialized = function(hook, context){
     var innerBody = null ;
     var startHeight , pY ;
     var docHeight =$(document).height() ;
-
-
+    //chat.stickToScreen(true);
     chat.show()
+    $('#chatbox').css('display', 'flex');
+    padcookie.setPref("chatAlwaysVisible", false);
+    $('#options-stickychat').prop('checked', false);
+
+    /**
+     * options-stickychat remove
+     */
+    
+    $('#options-stickychat').parent().hide();
+
+    /**
+     * options-chatandusers remove
+     */
+    
+    $('#options-chatandusers').parent().hide();
+
     padOuter = $('iframe[name="ace_outer"]').contents();
     padInner = padOuter.find('iframe[name="ace_inner"]').contents();
     outerBody = padOuter.find("#outerdocbody");
