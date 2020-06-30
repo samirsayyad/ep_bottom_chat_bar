@@ -34,7 +34,7 @@ exports.aceInitialized = function(hook, context){
         pY = event.pageY;
         isDragging = false;
         isMouseDown = true;
-        $("#resizer").css({"background-color":"red"})
+        //$("#resizer").css({"background-color":"red"})
         $("body").append("<div id='ghost_chat_resizer' style='top : "+event.pageY+"px'></div>")
         e=event || window.event;
         pauseEvent(e);
@@ -48,7 +48,7 @@ exports.aceInitialized = function(hook, context){
 
         isDragging= true
         if(isMouseDown){
-            $("#resizer").css({"background-color":"brown"})
+            //$("#resizer").css({"background-color":"brown"})
             $('#ghost_chat_resizer').css({
                 top:   event.pageY
             });
@@ -62,7 +62,7 @@ exports.aceInitialized = function(hook, context){
         console.log("mousemove ",event.pageY)
         isDragging= true
         if(isMouseDown){
-            $("#resizer").css({"background-color":"brown"})
+            //$("#resizer").css({"background-color":"brown"})
             $('#ghost_chat_resizer').css({
                 top:   event.pageY +85
             });
@@ -74,7 +74,7 @@ exports.aceInitialized = function(hook, context){
         console.log("mousemove ",event.pageY)
         isDragging= true
         if(isMouseDown){
-            $("#resizer").css({"background-color":"brown"})
+            //$("#resizer").css({"background-color":"brown"})
             $('#ghost_chat_resizer').css({
                 top:   event.pageY + 145
             });
@@ -90,7 +90,7 @@ exports.aceInitialized = function(hook, context){
     $(document).on('mouseup', function(event){
         console.log("mouseup document")
         if(isMouseDown){
-            $("#resizer").css({"background-color":"green"})
+            //$("#resizer").css({"background-color":"green"})
             $("#ghost_chat_resizer").remove()
             resizeChatBar(event.pageY)
         }
@@ -104,7 +104,7 @@ exports.aceInitialized = function(hook, context){
         console.log("mouseup outerBody")
         if(isMouseDown){
 
-            $("#resizer").css({"background-color":"green"})
+           // $("#resizer").css({"background-color":"green"})
             $("#ghost_chat_resizer").remove()
             resizeChatBar(event.pageY+85)
         }
@@ -116,7 +116,7 @@ exports.aceInitialized = function(hook, context){
         console.log("mouseup innerBody ")
         
         if(isMouseDown){
-            $("#resizer").css({"background-color":"green"})
+            //$("#resizer").css({"background-color":"green"})
             $("#ghost_chat_resizer").remove()
             resizeChatBar(event.pageY+ 145)
         }
