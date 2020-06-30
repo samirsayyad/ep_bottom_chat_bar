@@ -89,34 +89,40 @@ exports.aceInitialized = function(hook, context){
      */
     $(document).on('mouseup', function(event){
         console.log("mouseup document")
-        $("#resizer").css({"background-color":"green"})
-        $("#ghost_chat_resizer").remove()
-
+        if(isMouseDown){
+            $("#resizer").css({"background-color":"green"})
+            $("#ghost_chat_resizer").remove()
+            resizeChatBar(event.pageY)
+        }
         isDragging = false;
         isMouseDown = false ;
-        resizeChatBar(event.pageY)
 
     });
 
 
     outerBody.on("mouseup",function(event){
         console.log("mouseup outerBody")
-        $("#resizer").css({"background-color":"green"})
-        $("#ghost_chat_resizer").remove()
+        if(isMouseDown){
 
+            $("#resizer").css({"background-color":"green"})
+            $("#ghost_chat_resizer").remove()
+            resizeChatBar(event.pageY+85)
+        }
         isDragging = false;
         isMouseDown = false ;
-        resizeChatBar(event.pageY+85)
 
     })
     innerBody.on("mouseup",function(event){
         console.log("mouseup innerBody ")
-        $("#resizer").css({"background-color":"green"})
-        $("#ghost_chat_resizer").remove()
+        
+        if(isMouseDown){
+            $("#resizer").css({"background-color":"green"})
+            $("#ghost_chat_resizer").remove()
+            resizeChatBar(event.pageY+ 145)
+        }
 
         isDragging = false;
         isMouseDown = false ;
-        resizeChatBar(event.pageY+ 145)
 
     })
     function pauseEvent(e){
