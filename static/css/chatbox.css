@@ -43,3 +43,6 @@
     bottom: 0 !important;
     right: 0px !important;
 }
+#chaticon, .chat-content{
+    box-shadow:none;
+}
