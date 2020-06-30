@@ -44,7 +44,7 @@ exports.aceInitialized = function(hook, context){
      * mouse move
      */
     $(document).on('mousemove', function(event){
-        console.log("mousemove ",event.pageY)
+        //console.log("mousemove ",event.pageY)
 
         isDragging= true
         if(isMouseDown){
@@ -59,7 +59,7 @@ exports.aceInitialized = function(hook, context){
     });
 
     outerBody.on("mousemove",function(event){
-        console.log("mousemove ",event.pageY)
+        //console.log("mousemove ",event.pageY)
         isDragging= true
         if(isMouseDown){
             //$("#resizer").css({"background-color":"brown"})
@@ -71,7 +71,7 @@ exports.aceInitialized = function(hook, context){
         }
     })
     innerBody.on("mousemove",function(event){
-        console.log("mousemove ",event.pageY)
+        //console.log("mousemove ",event.pageY)
         isDragging= true
         if(isMouseDown){
             //$("#resizer").css({"background-color":"brown"})
@@ -88,7 +88,7 @@ exports.aceInitialized = function(hook, context){
      * mouseup
      */
     $(document).on('mouseup', function(event){
-        console.log("mouseup document")
+        //console.log("mouseup document")
         if(isMouseDown){
             //$("#resizer").css({"background-color":"green"})
             $("#ghost_chat_resizer").remove()
@@ -101,7 +101,7 @@ exports.aceInitialized = function(hook, context){
 
 
     outerBody.on("mouseup",function(event){
-        console.log("mouseup outerBody")
+        //console.log("mouseup outerBody")
         if(isMouseDown){
 
            // $("#resizer").css({"background-color":"green"})
@@ -113,7 +113,7 @@ exports.aceInitialized = function(hook, context){
 
     })
     innerBody.on("mouseup",function(event){
-        console.log("mouseup innerBody ")
+        //console.log("mouseup innerBody ")
         
         if(isMouseDown){
             //$("#resizer").css({"background-color":"green"})
