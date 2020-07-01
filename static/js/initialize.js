@@ -8,6 +8,7 @@ exports.aceInitialized = function(hook, context){
 	var outerBody = null;
     var innerBody = null ;
     var startHeight , pY ;
+    var minHeightChatBox = 140 ;
     var docHeight =$(document).height() ;
     chat.show()
     $('#chatbox').css('display', 'flex');
@@ -31,7 +32,9 @@ exports.aceInitialized = function(hook, context){
     outerBody = padOuter.find("#outerdocbody");
     innerBody = padInner.find("#innerdocbody");
 
-
+    $('iframe[name="ace_outer"]').css({
+        "padding-bottom" : minHeightChatBox
+    })
 
     /**
      * resizer inserting
@@ -199,16 +202,15 @@ exports.aceInitialized = function(hook, context){
         chatBoxBottom.css({
             height: newHeight,
         });
+
+        $('iframe[name="ace_outer"]').css({
+            "padding-bottom" : newHeight
+        })
     }
 
 
 
 
-    outerBody.on("scroll",function() {
-        var $height = outerBody.scrollTop();
-        console.log("I am  outerBody  scroll : ", $height)
-
-    });
 
 
 }
