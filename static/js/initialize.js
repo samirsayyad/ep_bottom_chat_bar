@@ -47,9 +47,7 @@ exports.aceInitialized = function(hook, context){
     chatBoxBottom.prepend(resizer);
 
 
-    $("#editorcontainerbox").css({
-        "z-index": 1000
-    })
+  
     
     /**
      * Mouse down
@@ -58,6 +56,9 @@ exports.aceInitialized = function(hook, context){
     $("#resizer").on('mousedown', function(event){
         $('iframe[name="ace_outer"]').css({
             "pointer-events" : "none"
+        })
+        $("#editorcontainerbox").css({
+            "z-index": 1000
         })
         startHeight = parseInt(document.defaultView.getComputedStyle(chatBoxBottom).height, 10);
         pY = event.pageY;
@@ -205,6 +206,9 @@ exports.aceInitialized = function(hook, context){
 
         $('iframe[name="ace_outer"]').css({
             "padding-bottom" : newHeight
+        })
+        $("#editorcontainerbox").css({
+            "z-index": 0
         })
     }
 
