@@ -73,7 +73,7 @@ exports.aceInitialized = function(hook, context){
      * mouse move
      */
     $(document).on('mousemove', function(event){
-        console.log("mousemove ",event.pageY)
+        //console.log("mousemove ",event.pageY)
 
         isDragging= true
         if(isMouseDown){
@@ -89,7 +89,7 @@ exports.aceInitialized = function(hook, context){
 
     });
     $("#editorcontainerbox").on('mousemove', function(event){
-        console.log("mousemove ",event.pageY)
+        ////console.log("mousemove ",event.pageY)
 
         isDragging= true
         if(isMouseDown){
@@ -105,7 +105,7 @@ exports.aceInitialized = function(hook, context){
     });
 
     // outerBody.on("mousemove",function(event){
-    //     console.log(" outerBody mousemove ",event.pageY , "document height : ", $(document).height() , outerBody.height())
+    //     ////console.log(" outerBody mousemove ",event.pageY , "document height : ", $(document).height() , outerBody.height())
     //     isDragging= true
     //     if(isMouseDown){
     //         //$("#resizer").css({"background-color":"brown"})
@@ -117,7 +117,7 @@ exports.aceInitialized = function(hook, context){
     //     }
     // })
     // innerBody.on("mousemove",function(event){
-    //     console.log(" innerBody mousemove ",event.pageY , "document height : ", $(document).height() , innerBody.height())
+    //     ////console.log(" innerBody mousemove ",event.pageY , "document height : ", $(document).height() , innerBody.height())
     //     isDragging= true
     //     if(isMouseDown){
     //         //$("#resizer").css({"background-color":"brown"})
@@ -134,7 +134,7 @@ exports.aceInitialized = function(hook, context){
      * mouseup
      */
     $(document).on('mouseup', function(event){
-        console.log("mouseup document")
+        ////console.log("mouseup document")
         if(isMouseDown){
             $('iframe[name="ace_outer"]').css({
                 "pointer-events" : "all"
@@ -148,7 +148,7 @@ exports.aceInitialized = function(hook, context){
     });
 
     $("#editorcontainerbox").on("mouseup",function(event){
-            console.log("mouseup editorcontainerbox")
+            ////console.log("mouseup editorcontainerbox")
             if(isMouseDown){
                 $('iframe[name="ace_outer"]').css({
                     "pointer-events" : "all"
@@ -161,7 +161,7 @@ exports.aceInitialized = function(hook, context){
     
         })
     // outerBody.on("mouseup",function(event){
-    //     console.log("mouseup outerBody")
+    //     ////console.log("mouseup outerBody")
     //     if(isMouseDown){
 
     //        // $("#resizer").css({"background-color":"green"})
@@ -173,7 +173,7 @@ exports.aceInitialized = function(hook, context){
 
     // })
     // innerBody.on("mouseup",function(event){
-    //     console.log("mouseup innerBody ")
+    //     //console.log("mouseup innerBody ")
         
     //     if(isMouseDown){
     //         //$("#resizer").css({"background-color":"green"})
@@ -196,7 +196,7 @@ exports.aceInitialized = function(hook, context){
         var chatBoxBottom = $("#chatBoxBottom")
         
         var mY = (pY - pageY );
-        console.log(mY  ,   pageY , pY , startHeight , (startHeight - mY))
+        //console.log(mY  ,   pageY , pY , startHeight , (startHeight - mY))
         var newHeight = (startHeight + mY < 10) ?  10 : startHeight + mY ;
         var newHeight = (newHeight >= docHeight ) ?  docHeight : newHeight;
         chatBoxBottom.css({
