@@ -12,10 +12,12 @@
 }
 #chattext p{
     background-color: #fff !important;
+    color: #485365;
+
 }
 #chattext .time{
     background-color: #fff !important;
-
+    color: #485365;
 }
 /* p { background: lime; height: 200px; width: 300px; } */
 .chat-content .resizable { background: cyan; position: relative; }
