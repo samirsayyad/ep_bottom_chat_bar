@@ -1,7 +1,6 @@
 var padcookie = require('ep_etherpad-lite/static/js/pad_cookie').padcookie;
 
 exports.aceInitialized = function(hook, context){
-    //chat.stickToScreen(true);
     var isDragging = false;
     var isMouseDown = false
     var padOuter = null;
@@ -10,7 +9,6 @@ exports.aceInitialized = function(hook, context){
     var innerBody = null ;
     var startHeight , pY ;
     var docHeight =$(document).height() ;
-    //chat.stickToScreen(true);
     chat.show()
     $('#chatbox').css('display', 'flex');
     padcookie.setPref("chatAlwaysVisible", false);
@@ -32,6 +30,9 @@ exports.aceInitialized = function(hook, context){
     padInner = padOuter.find('iframe[name="ace_inner"]').contents();
     outerBody = padOuter.find("#outerdocbody");
     innerBody = padInner.find("#innerdocbody");
+
+
+
     /**
      * resizer inserting
      */
@@ -42,11 +43,19 @@ exports.aceInitialized = function(hook, context){
     resizer.id = 'resizer';
     chatBoxBottom.prepend(resizer);
 
+
+    $("#editorcontainerbox").css({
+        "z-index": 1000
+    })
+    
     /**
      * Mouse down
      */
 
     $("#resizer").on('mousedown', function(event){
+        $('iframe[name="ace_outer"]').css({
+            "pointer-events" : "none"
+        })
         startHeight = parseInt(document.defaultView.getComputedStyle(chatBoxBottom).height, 10);
         pY = event.pageY;
         isDragging = false;
@@ -61,7 +70,7 @@ exports.aceInitialized = function(hook, context){
      * mouse move
      */
     $(document).on('mousemove', function(event){
-        //console.log("mousemove ",event.pageY)
+        console.log("mousemove ",event.pageY)
 
         isDragging= true
         if(isMouseDown){
@@ -69,45 +78,64 @@ exports.aceInitialized = function(hook, context){
             $('#ghost_chat_resizer').css({
                 top:   event.pageY
             });
+            
         }else{
+            
             $("#ghost_chat_resizer").remove()
         }
 
     });
+    $("#editorcontainerbox").on('mousemove', function(event){
+        console.log("mousemove ",event.pageY)
 
-    outerBody.on("mousemove",function(event){
-        //console.log("mousemove ",event.pageY)
         isDragging= true
         if(isMouseDown){
             //$("#resizer").css({"background-color":"brown"})
             $('#ghost_chat_resizer').css({
-                top:   event.pageY +85
+                top:   event.pageY
             });
+            
         }else{
+            
             $("#ghost_chat_resizer").remove()
         }
-    })
-    innerBody.on("mousemove",function(event){
-        //console.log("mousemove ",event.pageY)
-        isDragging= true
-        if(isMouseDown){
-            //$("#resizer").css({"background-color":"brown"})
-            $('#ghost_chat_resizer').css({
-                top:   event.pageY + 145
-            });
-        }else{
-            $("#ghost_chat_resizer").remove()
-        }
-    })
+    });
+
+    // outerBody.on("mousemove",function(event){
+    //     console.log(" outerBody mousemove ",event.pageY , "document height : ", $(document).height() , outerBody.height())
+    //     isDragging= true
+    //     if(isMouseDown){
+    //         //$("#resizer").css({"background-color":"brown"})
+    //         $('#ghost_chat_resizer').css({
+    //             top:   event.pageY +85
+    //         });
+    //     }else{
+    //         $("#ghost_chat_resizer").remove()
+    //     }
+    // })
+    // innerBody.on("mousemove",function(event){
+    //     console.log(" innerBody mousemove ",event.pageY , "document height : ", $(document).height() , innerBody.height())
+    //     isDragging= true
+    //     if(isMouseDown){
+    //         //$("#resizer").css({"background-color":"brown"})
+    //         $('#ghost_chat_resizer').css({
+    //             top:   event.pageY + 145
+    //         });
+    //     }else{
+    //         $("#ghost_chat_resizer").remove()
+    //     }
+    // })
 
 
     /**
      * mouseup
      */
     $(document).on('mouseup', function(event){
-        //console.log("mouseup document")
+        console.log("mouseup document")
         if(isMouseDown){
-            //$("#resizer").css({"background-color":"green"})
+            $('iframe[name="ace_outer"]').css({
+                "pointer-events" : "all"
+            })
             $("#ghost_chat_resizer").remove()
             resizeChatBar(event.pageY)
         }
@@ -116,32 +144,44 @@ exports.aceInitialized = function(hook, context){
 
     });
 
+    $("#editorcontainerbox").on("mouseup",function(event){
+            console.log("mouseup editorcontainerbox")
+            if(isMouseDown){
+                $('iframe[name="ace_outer"]').css({
+                    "pointer-events" : "all"
+                })
+                $("#ghost_chat_resizer").remove()
+                resizeChatBar(event.pageY+85)
+            }
+            isDragging = false;
+            isMouseDown = false ;
+    
+        })
+    // outerBody.on("mouseup",function(event){
+    //     console.log("mouseup outerBody")
+    //     if(isMouseDown){
 
-    outerBody.on("mouseup",function(event){
-        //console.log("mouseup outerBody")
-        if(isMouseDown){
+    //        // $("#resizer").css({"background-color":"green"})
+    //         $("#ghost_chat_resizer").remove()
+    //         resizeChatBar(event.pageY+85)
+    //     }
+    //     isDragging = false;
+    //     isMouseDown = false ;
 
-           // $("#resizer").css({"background-color":"green"})
-            $("#ghost_chat_resizer").remove()
-            resizeChatBar(event.pageY+85)
-        }
-        isDragging = false;
-        isMouseDown = false ;
-
-    })
-    innerBody.on("mouseup",function(event){
-        //console.log("mouseup innerBody ")
+    // })
+    // innerBody.on("mouseup",function(event){
+    //     console.log("mouseup innerBody ")
         
-        if(isMouseDown){
-            //$("#resizer").css({"background-color":"green"})
-            $("#ghost_chat_resizer").remove()
-            resizeChatBar(event.pageY+ 145)
-        }
+    //     if(isMouseDown){
+    //         //$("#resizer").css({"background-color":"green"})
+    //         $("#ghost_chat_resizer").remove()
+    //         resizeChatBar(event.pageY+ 145)
+    //     }
 
-        isDragging = false;
-        isMouseDown = false ;
+    //     isDragging = false;
+    //     isMouseDown = false ;
 
-    })
+    // })
     function pauseEvent(e){
         if(e.stopPropagation) e.stopPropagation();
         if(e.preventDefault) e.preventDefault();
@@ -153,12 +193,22 @@ exports.aceInitialized = function(hook, context){
         var chatBoxBottom = $("#chatBoxBottom")
         
         var mY = (pY - pageY );
-        //console.log(mY  ,   pageY , pY , startHeight , (startHeight - mY))
+        console.log(mY  ,   pageY , pY , startHeight , (startHeight - mY))
         var newHeight = (startHeight + mY < 10) ?  10 : startHeight + mY ;
         var newHeight = (newHeight >= docHeight ) ?  docHeight : newHeight;
         chatBoxBottom.css({
             height: newHeight,
         });
     }
+
+
+
+
+    outerBody.on("scroll",function() {
+        var $height = outerBody.scrollTop();
+        console.log("I am  outerBody  scroll : ", $height)
+
+    });
+
 
 }
