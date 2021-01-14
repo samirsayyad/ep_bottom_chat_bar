@@ -1,6 +1,6 @@
 {
   "name": "ep_bottom_chat_bar",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "bottom chat and always open , also timestamp dock to left ",
   "main": "index.js",
   "scripts": {
